@@ -17,7 +17,7 @@ public class AvoidanceAI : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
 
         // Set the destination of the NavMeshAgent to the goal position
-        if (goal != null)
+       if (goal != null)
         {
             agent.SetDestination(goal.position);
         }
