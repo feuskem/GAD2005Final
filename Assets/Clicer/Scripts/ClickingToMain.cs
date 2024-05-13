@@ -10,12 +10,6 @@ public class ClickableObject : MonoBehaviour
     // How much the object shrinks when clicked
     public float shrinkScale = 0.9f;
 
-    // The object to spawn
-    public GameObject objectToSpawn;
-
-    // The spawn location object
-    public GameObject spawnLocation;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -39,16 +33,6 @@ public class ClickableObject : MonoBehaviour
                 // If the object is clicked, shrink it
                 transform.localScale = initialScale * shrinkScale;
 
-                // Check if a spawn location is assigned
-                if (spawnLocation != null)
-                {
-                    // Spawn a new object at the position of the spawn location
-                    Instantiate(objectToSpawn, spawnLocation.transform.position, Quaternion.identity);
-                }
-                else
-                {
-                    Debug.LogWarning("Spawn location is not assigned.");
-                }
             }
         }
         else if (Input.GetMouseButtonUp(0))

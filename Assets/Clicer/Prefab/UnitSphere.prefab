@@ -16,8 +16,8 @@ GameObject:
   - component: {fileID: -258861190697503747}
   - component: {fileID: -7547600045427428897}
   m_Layer: 0
-  m_Name: Sphere
-  m_TagString: Untagged
+  m_Name: UnitSphere
+  m_TagString: Ally
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -169,4 +169,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d30ce2075b8630c4ab6532ea6c7b5169, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goal: {fileID: 4260226771994738625, guid: 7b732ebd2a50b134ea3c6fca17af57b1, type: 3}
+  goalTag: Enemy
