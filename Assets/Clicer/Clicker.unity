@@ -1574,6 +1574,7 @@ MonoBehaviour:
   units:
   - {fileID: 1912421916}
   - {fileID: 948655395}
+  unitManpowerCosts: 320000004b000000
 --- !u!1001 &564801254
 PrefabInstance:
   m_ObjectHideFlags: 0
