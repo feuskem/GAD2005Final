@@ -301,11 +301,11 @@ LODGroup:
   - screenRelativeHeight: 0.126
     fadeTransitionWidth: 0
     renderers: []
-  - screenRelativeHeight: 0.125
+  - screenRelativeHeight: 0.011
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 1309944978084627218}
-  - screenRelativeHeight: 0.01
+  - screenRelativeHeight: 0
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 5828874672928699267}
