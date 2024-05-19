@@ -4,14 +4,15 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Goal
   - Enemy
   - Ally
+  - WaitPosition
+  - Castle
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Castle
   - Water
   - UI
   - 
@@ -43,4 +44,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Castle
+    uniqueID: 3923017751
     locked: 0

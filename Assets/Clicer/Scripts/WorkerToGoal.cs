@@ -8,36 +8,60 @@ public class AvoidanceAI : MonoBehaviour
     // Reference to the NavMeshAgent component
     private NavMeshAgent agent;
 
-    public string goalTag = "Enemy";
+    public string primaryGoalTag = "Enemy"; // Tag for primary goal objects
+    public string secondaryGoalTag = "Castle"; // Tag for secondary goal objects
+    public float stopDistance = 5f; // Distance to stop from the goal
+
+    private Transform closestGoal;
 
     void Start()
     {
         // Get the NavMeshAgent component attached to this object
         agent = GetComponent<NavMeshAgent>();
 
-        // Find the closest goal and set it as the destination
+        // Initially find the closest goal and set it as the destination
         SetClosestGoalAsDestination();
     }
 
     void Update()
     {
-        // Check if the agent has reached the destination
-        if (!agent.pathPending && agent.remainingDistance < 0.1f)
+        // Continuously update the closest goal and set the destination
+        SetClosestGoalAsDestination();
+
+        // If a goal is set, check the distance to it
+        if (closestGoal != null)
         {
-            // Find a new closest goal and set it as the destination
-            SetClosestGoalAsDestination();
+            float distanceToGoal = Vector3.Distance(transform.position, closestGoal.position);
+
+            // Stop the agent if within the stop distance
+            if (distanceToGoal <= stopDistance)
+            {
+                agent.isStopped = true;
+            }
+            else
+            {
+                // Move towards the goal if not within the stop distance
+                agent.isStopped = false;
+                agent.SetDestination(closestGoal.position);
+            }
         }
     }
 
     void SetClosestGoalAsDestination()
     {
-        // Find all goals in the scene
-        GameObject[] goals = GameObject.FindGameObjectsWithTag(goalTag);
+        // Try finding primary goals first
+        GameObject[] goals = GameObject.FindGameObjectsWithTag(primaryGoalTag);
+
+        if (goals.Length == 0)
+        {
+            // If no primary goals are found, try finding secondary goals
+            goals = GameObject.FindGameObjectsWithTag(secondaryGoalTag);
+        }
 
         if (goals.Length > 0)
         {
             // Initialize variables to store information about the closest goal
-            Transform closestGoal = null;
+            closestGoal = null;
             float closestDistance = Mathf.Infinity;
 
             // Iterate through each goal to find the closest one
