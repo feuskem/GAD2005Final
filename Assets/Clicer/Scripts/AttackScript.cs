@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class CombatUnit : MonoBehaviour
 {
+    public Animator anim;
+
     // Combat settings
     public float attackDamage = 10f;
     public float attackRate = 1f;
@@ -72,6 +74,7 @@ public class CombatUnit : MonoBehaviour
         if (enemyHealth != null)
         {
             enemyHealth.TakeDamage(attackDamage);
+            SetAnimBool("Attack");
         }
     }
 
@@ -97,6 +100,17 @@ public class CombatUnit : MonoBehaviour
     {
         // Handle death (e.g., play animation, remove from scene)
         Destroy(gameObject);
+        SetAnimBool("Death");
     }
+
+    public void SetAnimBool(string animName)
+    {
+        foreach (AnimatorControllerParameter parameter in anim.parameters)
+        {
+            anim.SetBool(parameter.name, false);
+        }
+        anim.SetBool(animName, true);
+    }
+
 }
 

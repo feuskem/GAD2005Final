@@ -608,6 +608,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14002b280cc3d1d4b9511988696447e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 6245879884870519267}
   attackDamage: 5
   attackRate: 1
   enemyTag: Enemy
@@ -752,5 +753,10 @@ PrefabInstance:
 --- !u!4 &6245879884724205158 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2836004475591197023, guid: f432554f564e69242897607d34218939, type: 3}
+  m_PrefabInstance: {fileID: 8211840730200962873}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &6245879884870519267 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2836004473841745626, guid: f432554f564e69242897607d34218939, type: 3}
   m_PrefabInstance: {fileID: 8211840730200962873}
   m_PrefabAsset: {fileID: 0}
