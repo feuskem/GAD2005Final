@@ -125,9 +125,7 @@ GameObject:
   - component: {fileID: 4603386839117958034}
   - component: {fileID: -2381207488022341364}
   - component: {fileID: 409810773135378686}
-  - component: {fileID: 8487212000247774458}
   - component: {fileID: 7500469310078493581}
-  - component: {fileID: -3604709432210844950}
   m_Layer: 0
   m_Name: EnemyCapsule
   m_TagString: Enemy
@@ -260,22 +258,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d30ce2075b8630c4ab6532ea6c7b5169, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
+  anim: {fileID: 4076686777950769069}
   primaryGoalTag: Castle
   secondaryGoalTag: Castle
   stopDistance: 2
---- !u!114 &8487212000247774458
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 349639176208332832}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 752562bebc084f241bab8a44c6fb0e29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &7500469310078493581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -289,26 +275,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 4076686777950769069}
+  isitcastle: 0
+  RestardB: {fileID: 0}
   attackDamage: 20
-  attackRate: 1
-  enemyTag: Castle
-  enemyTag2: Ally
-  maxHealth: 100
-  healthBar: {fileID: 2720554397774741507}
---- !u!114 &-3604709432210844950
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 349639176208332832}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14002b280cc3d1d4b9511988696447e8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  anim: {fileID: 4076686777950769069}
-  attackDamage: 10
   attackRate: 1
   enemyTag: Castle
   enemyTag2: Ally

@@ -6,6 +6,7 @@ public class ObjectSpawner : MonoBehaviour
 {
     // Object prefabs to spawn
     public GameObject[] objectPrefabs;
+    public GameObject NextLB;
 
     // Spawn area dimensions
     public Vector3 spawnAreaSize = new Vector3(10f, 10f, 10f);
@@ -17,6 +18,9 @@ public class ObjectSpawner : MonoBehaviour
     private float ResetSpawnTimer;
     public float ReduceResetTimer;
 
+    public float SpawnNumberLimit = 0;
+    private float SpawnNumber;
+
     void Start()
     {
         // Start the spawn timer
@@ -24,35 +28,56 @@ public class ObjectSpawner : MonoBehaviour
 
         // Spawn the first object immediately upon starting
         SpawnObject();
+        SpawnNumber = 0;
     }
 
     void Update()
     {
-        // Decrease the spawn timer
-        spawnTimer -= Time.deltaTime;
 
-        // Check if it's time to spawn a new object
-        if (spawnTimer <= 0f)
+        if (SpawnNumber < SpawnNumberLimit)
         {
-            // Spawn the object
-            SpawnObject();
 
-            // Reset the spawn timer
-            spawnTimer = ResetSpawnTimer;
-        }
+            // Decrease the spawn timer
+            spawnTimer -= Time.deltaTime;
 
-
-        ReduceResetTimer -= Time.deltaTime;
-
-        if (ReduceResetTimer <= 0f)
-        {
-            ResetSpawnTimer -= 1f;
-
-            if (ResetSpawnTimer < 5f)
+            // Check if it's time to spawn a new object
+            if (spawnTimer <= 0f)
             {
-                ResetSpawnTimer = 5f;
+                // Spawn the object
+                SpawnObject();
+                SpawnNumber++;
+
+                // Reset the spawn timer
+                spawnTimer = ResetSpawnTimer;
+            }
+
+
+            ReduceResetTimer -= Time.deltaTime;
+
+            if (ReduceResetTimer <= 0f)
+            {
+                ResetSpawnTimer -= 1f;
+
+                if (ResetSpawnTimer < 5f)
+                {
+                    ResetSpawnTimer = 5f;
+                }
             }
         }
+        else 
+        {
+
+         GameObject[] Reainings =  GameObject.FindGameObjectsWithTag("Enemy");
+
+            if(Reainings.Length <= 0)
+            {
+                NextLB.SetActive(true);
+                Time.timeScale = 0;
+            }
+
+        }
+
+
     }
 
     void SpawnObject()
@@ -60,6 +85,7 @@ public class ObjectSpawner : MonoBehaviour
         // Randomly select one of the object prefabs
         GameObject objectToSpawn = objectPrefabs[Random.Range(0, objectPrefabs.Length)];
 
+ 
         // Calculate random spawn position within spawn area
         Vector3 spawnPosition = transform.position + new Vector3(
             Random.Range(-spawnAreaSize.x / 2f, spawnAreaSize.x / 2f),

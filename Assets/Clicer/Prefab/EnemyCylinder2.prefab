@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 6224919563377357368}
   - component: {fileID: 7851848275725964187}
   - component: {fileID: 6185624524853652574}
-  - component: {fileID: -1997664432804828728}
   - component: {fileID: 5752127487386744827}
   - component: {fileID: 6606003403072383170}
   m_Layer: 0
@@ -180,18 +179,6 @@ MonoBehaviour:
   primaryGoalTag: Ally
   secondaryGoalTag: Castle
   stopDistance: 2
---- !u!114 &-1997664432804828728
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 738399346643520379}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 752562bebc084f241bab8a44c6fb0e29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &5752127487386744827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,6 +192,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 4934384598810591221}
+  isitcastle: 0
+  RestardB: {fileID: 0}
   attackDamage: 10
   attackRate: 1
   enemyTag: Ally

@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class CombatUnit : MonoBehaviour
 {
     public Animator anim;
+    public bool isitcastle;
+    public GameObject RestardB;
 
     // Combat settings
     public float attackDamage = 10f;
@@ -85,7 +87,10 @@ public class CombatUnit : MonoBehaviour
         if (enemyHealth != null)
         {
             enemyHealth.TakeDamage(attackDamage);
-            anim.SetTrigger("Attack");
+            if(isitcastle==false)
+            {
+                anim.SetTrigger("Attack");
+            }
         }
     }
 
@@ -110,8 +115,18 @@ public class CombatUnit : MonoBehaviour
     void Die()
     {
         // Handle death (e.g., play animation, remove from scene)
-        anim.SetBool("Death", true);
+        if (isitcastle == false)
+        {
+            anim.SetBool("Death", true);
+        }
+        if (isitcastle == true)
+        {
+            RestardB.SetActive(true);
+            Time.timeScale = 0;
+        }
+
         Destroy(gameObject);
+        
     }
 
 }

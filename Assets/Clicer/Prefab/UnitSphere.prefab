@@ -317,7 +317,6 @@ GameObject:
   - component: {fileID: -3910606541125208140}
   - component: {fileID: -258861190697503747}
   - component: {fileID: -7547600045427428897}
-  - component: {fileID: -848558692653942584}
   - component: {fileID: 2876529530415103886}
   m_Layer: 0
   m_Name: UnitSphere
@@ -479,18 +478,6 @@ MonoBehaviour:
   primaryGoalTag: Enemy
   secondaryGoalTag: Enemy
   stopDistance: 7
---- !u!114 &-848558692653942584
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6966361229617764879}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 752562bebc084f241bab8a44c6fb0e29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2876529530415103886
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -504,6 +491,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 6245879884870519267}
+  isitcastle: 0
+  RestardB: {fileID: 0}
   attackDamage: 5
   attackRate: 1
   enemyTag: Enemy
