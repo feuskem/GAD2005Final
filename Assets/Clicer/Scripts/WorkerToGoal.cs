@@ -5,6 +5,9 @@ using UnityEngine.AI;
 
 public class AvoidanceAI : MonoBehaviour
 {
+
+    public Animator anim;
+
     // Reference to the NavMeshAgent component
     private NavMeshAgent agent;
 
@@ -37,12 +40,14 @@ public class AvoidanceAI : MonoBehaviour
             if (distanceToGoal <= stopDistance)
             {
                 agent.isStopped = true;
+                anim.SetBool("Run", false);
             }
             else
             {
                 // Move towards the goal if not within the stop distance
                 agent.isStopped = false;
                 agent.SetDestination(closestGoal.position);
+                anim.SetBool("Run", true);
             }
         }
     }
@@ -81,6 +86,7 @@ public class AvoidanceAI : MonoBehaviour
             if (closestGoal != null)
             {
                 agent.SetDestination(closestGoal.position);
+
             }
         }
     }

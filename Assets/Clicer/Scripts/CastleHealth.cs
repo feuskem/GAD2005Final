@@ -3,15 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CombatUnit : MonoBehaviour
+public class CombatCastle : MonoBehaviour
 {
-    public Animator anim;
+  
 
     // Combat settings
     public float attackDamage = 10f;
     public float attackRate = 1f;
     public string enemyTag = "Enemy";
-    public string enemyTag2 = "Enemy";
 
     // Health settings
     public float maxHealth = 100f;
@@ -27,7 +26,6 @@ public class CombatUnit : MonoBehaviour
         // Initialize health
         currentHealth = maxHealth;
         UpdateHealthBar();
-
     }
 
     void Update()
@@ -46,10 +44,6 @@ public class CombatUnit : MonoBehaviour
         {
             enemiesInRange.Add(other.gameObject);
         }
-       else if (other.CompareTag(enemyTag2))
-        {
-            enemiesInRange.Add(other.gameObject);
-        }
     }
 
     void OnTriggerExit(Collider other)
@@ -57,10 +51,6 @@ public class CombatUnit : MonoBehaviour
         if (other.CompareTag(enemyTag))
         {
             enemiesInRange.Remove(other.gameObject);
-        }
-        else if (other.CompareTag(enemyTag2))
-        {
-            enemiesInRange.Add(other.gameObject);
         }
     }
 
@@ -85,7 +75,6 @@ public class CombatUnit : MonoBehaviour
         if (enemyHealth != null)
         {
             enemyHealth.TakeDamage(attackDamage);
-            anim.SetTrigger("Attack");
         }
     }
 
@@ -110,9 +99,7 @@ public class CombatUnit : MonoBehaviour
     void Die()
     {
         // Handle death (e.g., play animation, remove from scene)
-        anim.SetBool("Death", true);
         Destroy(gameObject);
     }
 
 }
-
