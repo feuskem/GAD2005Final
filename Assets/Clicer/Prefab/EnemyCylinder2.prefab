@@ -151,7 +151,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 3
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -194,11 +194,11 @@ MonoBehaviour:
   anim: {fileID: 4934384598810591221}
   isitcastle: 0
   RestardB: {fileID: 0}
-  attackDamage: 10
+  attackDamage: 5
   attackRate: 1
   enemyTag: Ally
   enemyTag2: Castle
-  maxHealth: 100
+  maxHealth: 75
   healthBar: {fileID: 4073120516839869229}
 --- !u!135 &6606003403072383170
 SphereCollider:

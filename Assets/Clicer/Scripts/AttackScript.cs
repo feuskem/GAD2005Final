@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CombatUnit : MonoBehaviour
+public class AttackScript : MonoBehaviour
 {
     public Animator anim;
     public bool isitcastle;
@@ -23,13 +23,14 @@ public class CombatUnit : MonoBehaviour
     private float currentHealth;
     private float nextAttackTime = 0f;
     private List<GameObject> enemiesInRange = new List<GameObject>();
+    public EnemySpawner enemyspawner;
 
     void Start()
     {
         // Initialize health
         currentHealth = maxHealth;
         UpdateHealthBar();
-
+        enemyspawner = GameObject.FindObjectOfType<EnemySpawner>();
     }
 
     void Update()
@@ -83,7 +84,7 @@ public class CombatUnit : MonoBehaviour
 
     void Attack(GameObject enemy)
     {
-        CombatUnit enemyHealth = enemy.GetComponent<CombatUnit>();
+        AttackScript enemyHealth = enemy.GetComponent<AttackScript>();
         if (enemyHealth != null)
         {
             enemyHealth.TakeDamage(attackDamage);
@@ -126,6 +127,7 @@ public class CombatUnit : MonoBehaviour
         }
 
         Destroy(gameObject);
+        enemyspawner.EnemyDied(this.gameObject);
         
     }
 

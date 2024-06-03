@@ -2071,6 +2071,7 @@ MonoBehaviour:
   enemyTag2: Enemy
   maxHealth: 100
   healthBar: {fileID: 1435004900}
+  enemyspawner: {fileID: 0}
 --- !u!135 &389474388
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4600,11 +4601,8 @@ MonoBehaviour:
   objectPrefabs:
   - {fileID: 738399346643520379, guid: 003f9b5d52d367e4fb515d978d33669b, type: 3}
   - {fileID: 349639176208332832, guid: 04d83bde0845a924eb09a4f048179f0c, type: 3}
-  NextLB: {fileID: 1188256420}
   spawnAreaSize: {x: 20.54, y: 0, z: 4.8}
-  spawnTimer: 10
-  ReduceResetTimer: 10
-  SpawnNumberLimit: 2
+  totalWaves: 3
 --- !u!65 &865217006
 BoxCollider:
   m_ObjectHideFlags: 0

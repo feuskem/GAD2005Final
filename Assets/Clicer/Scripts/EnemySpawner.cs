@@ -2,105 +2,67 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectSpawner : MonoBehaviour
+public class EnemySpawner : MonoBehaviour
 {
     // Object prefabs to spawn
     public GameObject[] objectPrefabs;
-    public GameObject NextLB;
 
     // Spawn area dimensions
     public Vector3 spawnAreaSize = new Vector3(10f, 10f, 10f);
 
-    // Timer for spawning
-    public float spawnTimer;
-
-    // Time interval between spawns
-    private float ResetSpawnTimer;
-    public float ReduceResetTimer;
-
-    public float SpawnNumberLimit = 0;
     private float SpawnNumber;
+    public int totalWaves = 3;
+    private int currentWave = 0;
+
+    private List<GameObject> enemies = new List<GameObject>();
+
 
     void Start()
     {
-        // Start the spawn timer
-        ResetSpawnTimer = spawnTimer;
-
-        // Spawn the first object immediately upon starting
-        SpawnObject();
-        SpawnNumber = 0;
+        StartNextWave();
     }
 
-    void Update()
+    void StartNextWave()
     {
-
-        if (SpawnNumber < SpawnNumberLimit)
+        if (currentWave < totalWaves)
         {
-
-            // Decrease the spawn timer
-            spawnTimer -= Time.deltaTime;
-
-            // Check if it's time to spawn a new object
-            if (spawnTimer <= 0f)
-            {
-                // Spawn the object
-                SpawnObject();
-                SpawnNumber++;
-
-                // Reset the spawn timer
-                spawnTimer = ResetSpawnTimer;
-            }
-
-
-            ReduceResetTimer -= Time.deltaTime;
-
-            if (ReduceResetTimer <= 0f)
-            {
-                ResetSpawnTimer -= 1f;
-
-                if (ResetSpawnTimer < 5f)
-                {
-                    ResetSpawnTimer = 5f;
-                }
-            }
+            currentWave++;
+            StartCoroutine(SpawnEnemies());
         }
-        else 
+    }
+
+    IEnumerator SpawnEnemies()
+    {
+        int numberOfEnemies = currentWave + 2;
+       
+        for (int i = 0; i < numberOfEnemies; i++)
         {
-
-         GameObject[] Reainings =  GameObject.FindGameObjectsWithTag("Enemy");
-
-            if(Reainings.Length <= 0)
-            {
-                NextLB.SetActive(true);
-                Time.timeScale = 0;
-            }
-
+            GameObject objectToSpawn = objectPrefabs[Random.Range(0, objectPrefabs.Length)];
+            Vector3 spawnPosition = transform.position + new Vector3(
+                Random.Range(-spawnAreaSize.x / 2f, spawnAreaSize.x / 2f),
+                Random.Range(-spawnAreaSize.y / 2f, spawnAreaSize.y / 2f),
+                Random.Range(-spawnAreaSize.z / 2f, spawnAreaSize.z / 2f)
+            );
+            GameObject enemy = Instantiate(objectToSpawn, spawnPosition, Quaternion.identity);
+            enemies.Add(enemy);
+            yield return new WaitForSeconds(0.5f);  // Düþmanlar arasýnda bekleme süresi
         }
-
+       
 
     }
 
-    void SpawnObject()
+    public void EnemyDied(GameObject enemy)
     {
-        // Randomly select one of the object prefabs
-        GameObject objectToSpawn = objectPrefabs[Random.Range(0, objectPrefabs.Length)];
-
- 
-        // Calculate random spawn position within spawn area
-        Vector3 spawnPosition = transform.position + new Vector3(
-            Random.Range(-spawnAreaSize.x / 2f, spawnAreaSize.x / 2f),
-            Random.Range(-spawnAreaSize.y / 2f, spawnAreaSize.y / 2f),
-            Random.Range(-spawnAreaSize.z / 2f, spawnAreaSize.z / 2f)
-        );
-
-        // Instantiate the selected object at the calculated spawn position
-        Instantiate(objectToSpawn, spawnPosition, Quaternion.identity);
+        enemies.Remove(enemy);
+        if (enemies.Count == 0)
+        {
+            StartCoroutine(NextWaveAfterDelay());
+        }
     }
 
-    void OnDrawGizmosSelected()
+    IEnumerator NextWaveAfterDelay()
     {
-        // Draw wire cube representing the spawn area
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(transform.position, spawnAreaSize);
+        yield return new WaitForSeconds(5); // Dalga tamamlandýktan sonra bekleme süresi
+        StartNextWave();
     }
 }

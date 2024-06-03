@@ -277,12 +277,13 @@ MonoBehaviour:
   anim: {fileID: 4076686777950769069}
   isitcastle: 0
   RestardB: {fileID: 0}
-  attackDamage: 20
+  attackDamage: 10
   attackRate: 1
   enemyTag: Castle
   enemyTag2: Ally
-  maxHealth: 100
+  maxHealth: 1
   healthBar: {fileID: 2720554397774741507}
+  enemyspawner: {fileID: 0}
 --- !u!1 &1512406238780836329
 GameObject:
   m_ObjectHideFlags: 0
