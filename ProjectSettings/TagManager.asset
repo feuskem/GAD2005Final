@@ -8,6 +8,7 @@ TagManager:
   - Ally
   - WaitPosition
   - Castle
+  - Ground
   layers:
   - Default
   - TransparentFX

@@ -198,6 +198,7 @@ MonoBehaviour:
   enemyTag2: Enemy
   maxHealth: 75
   healthBar: {fileID: 4073120516839869229}
+  enemyspawner: {fileID: 0}
 --- !u!135 &7911254748179222397
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -217,8 +218,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 1.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 1
+  m_Center: {x: 0, y: 0, z: 0.59}
 --- !u!1 &1101415046989145788
 GameObject:
   m_ObjectHideFlags: 0

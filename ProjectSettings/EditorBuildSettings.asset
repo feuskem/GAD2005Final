@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Clicer/Clicker.unity
+    guid: ebd4e2dc33c8241489acb05606bbe92f
+  - enabled: 1
+    path: Assets/Clicer/Clicker2_Yakub.unity
+    guid: 8ff15683e4ff4dc4682f8f173b18bcde
   m_configObjects: {}

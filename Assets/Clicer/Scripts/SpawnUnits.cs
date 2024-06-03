@@ -7,6 +7,7 @@ public class SpawnUnits : MonoBehaviour
       public int[] unitManpowerCosts;
     private int selectedUnitIndex = 0;
     private Coroutine increaseManpowerCoroutine;
+    
 
     int manpower = 250;
 
@@ -30,7 +31,7 @@ public class SpawnUnits : MonoBehaviour
             {
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hit;
-                if (Physics.Raycast(ray, out hit))
+                if (Physics.Raycast(ray, out hit) && hit.collider.CompareTag("Ground"))
                 {
                     Instantiate(units[selectedUnitIndex], hit.point + Vector3.up * 2, Quaternion.identity);
                     manpower -= unitManpowerCosts[selectedUnitIndex]; 
