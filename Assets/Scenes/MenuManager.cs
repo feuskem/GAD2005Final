@@ -23,4 +23,45 @@ public class MenuManager : MonoBehaviour
     {
         
     }
+
+    public void PlayButton()
+    {
+        SceneManager.LoadScene(1);
+    }
+
+    public void SelectLevel()
+    {
+        LevelSelectionPanel.SetActive(true);
+    }
+
+    public void BackToMainMenu()
+    {
+        LevelSelectionPanel.SetActive(false);
+        HowToPlayPanel.SetActive(false);
+    }
+
+    public void HowToPlay()
+    {
+        HowToPlayPanel.SetActive(true);
+    }
+
+    public void OpenLevel1()
+    {
+         SceneManager.LoadScene(1);
+    }
+
+    public void OpenLevel2()
+    {
+         SceneManager.LoadScene(2);
+    }
+
+    public void OpenLevel3()
+    {
+         SceneManager.LoadScene(3);
+    }
+
+    public void OpenLevel4()
+    {
+         SceneManager.LoadScene(4);
+    }
 }

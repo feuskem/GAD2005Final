@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
+using TMPro;
 
 public class SpawnUnits : MonoBehaviour
 {
@@ -7,6 +9,7 @@ public class SpawnUnits : MonoBehaviour
       public int[] unitManpowerCosts;
     private int selectedUnitIndex = 0;
     private Coroutine increaseManpowerCoroutine;
+    public TextMeshProUGUI  manpowerText;
     
 
     int manpower = 250;
@@ -25,6 +28,8 @@ public class SpawnUnits : MonoBehaviour
 
     private void Update()
     {
+
+         manpowerText.text = manpower.ToString();
         if (Input.GetMouseButtonDown(0))
         {
             if (manpower >= unitManpowerCosts[selectedUnitIndex]) 
