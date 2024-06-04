@@ -16,6 +16,7 @@ public class EnemySpawner : MonoBehaviour
 
     private List<GameObject> enemies = new List<GameObject>();
 
+    public GameObject NextLB;
 
     void Start()
     {
@@ -29,6 +30,17 @@ public class EnemySpawner : MonoBehaviour
             currentWave++;
             StartCoroutine(SpawnEnemies());
         }
+
+        GameObject[] goals = GameObject.FindGameObjectsWithTag("Enemy");
+
+        if (goals.Length == 0)
+        {
+            if (currentWave >= totalWaves)
+            {
+                NextLB.SetActive(true);
+            }
+        }
+
     }
 
     IEnumerator SpawnEnemies()

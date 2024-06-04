@@ -196,7 +196,7 @@ MonoBehaviour:
   attackRate: 1
   enemyTag: Enemy
   enemyTag2: Enemy
-  maxHealth: 50
+  maxHealth: 75
   healthBar: {fileID: 4073120516839869229}
   enemyspawner: {fileID: 0}
 --- !u!135 &7911254748179222397

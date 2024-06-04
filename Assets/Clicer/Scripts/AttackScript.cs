@@ -123,7 +123,6 @@ public class AttackScript : MonoBehaviour
         if (isitcastle == true)
         {
             RestardB.SetActive(true);
-            Time.timeScale = 0;
         }
 
         Destroy(gameObject);
